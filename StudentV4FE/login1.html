@@ -1,0 +1,78 @@
+
+        <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>登录界面</title>
+    <link rel="stylesheet" type="text/css" href="css/login1.css">
+</head>
+<body>
+  <div class="login">
+      <h2>学生管理系统登录</h2>
+      <form action="index.html" onsubmit="return login()" method="post">
+      <div class="login_form">
+          <span>账号：</span>
+          <input type="text" placeholder="请输入学号/工号（ID号）" id="name"><br>
+          <span>密码：</span>
+          <input type="password" placeholder="请输入密码" id="password"><br>
+
+          <!-- 注册区域：点击“注册”按钮后展示 -->
+          <div id="registerArea" style="display:none; margin-top: 10px;">
+              <span>注册类型：</span>
+              <label style="margin-right: 10px;">
+                  <input type="radio" name="registerRole" value="student" checked>
+                  学生
+              </label>
+              <label>
+                  <input type="radio" name="registerRole" value="teacher">
+                  教师
+              </label>
+              <br>
+
+              <!-- 学生注册信息（后端会自动写入 Student 表并生成学号） -->
+              <div id="studentRegFields" style="margin-top: 10px;">
+                  <span>姓名：</span>
+                  <input type="text" placeholder="学生姓名（必填）" id="studentName"><br>
+                  <span>性别：</span>
+                  <select id="studentGender">
+                      <option value="" selected>请选择</option>
+                      <option value="男">男</option>
+                      <option value="女">女</option>
+                  </select><br>
+                  <span>生日：</span>
+                  <input type="date" id="studentBirthday"><br>
+                  <span>电话：</span>
+                  <input type="text" placeholder="可选" id="studentMobile"><br>
+                  <span>邮箱：</span>
+                  <input type="text" placeholder="可选" id="studentEmail"><br>
+                  <span>地址：</span>
+                  <input type="text" placeholder="可选" id="studentAddress"><br>
+              </div>
+
+              <!-- 教师注册信息（可选） -->
+              <div id="teacherRegFields" style="display:none; margin-top: 10px;">
+                  <span>工号：</span>
+                  <input type="text" placeholder="可选（不填默认用账号）" id="teacherNo"><br>
+                  <span>姓名：</span>
+                  <input type="text" placeholder="可选（不填默认用账号）" id="teacherName"><br>
+              </div>
+          </div>
+      </div>
+      <div class="btn">
+          <button class="login_btn" type="button" onclick="loginAction()">登&nbsp;&nbsp;录</button>
+          <button class="register_btn" type="button" onclick="registerAction()">注&nbsp;&nbsp;册</button>
+      </div>
+          <div class="span">
+              <span id="demo"></span>
+          </div>
+      </form>
+  </div>
+  <!-- 修复1：正确闭合 axios 引入标签 -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  
+  <script src = './js/login1.js'>
+
+  </script>
+
+</body>
+</html>

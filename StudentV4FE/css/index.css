@@ -1,0 +1,33 @@
+html, body, #app, .el-container {
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+}
+
+.el-header {
+  background-color: #b3c0d1;
+  color: #333;
+  text-align: left;
+  line-height: 80px;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.el-footer {
+  background-color: #b3c0d1;
+  color: #333;
+  text-align: center;
+  line-height: 30px;
+}
+
+.el-aside {
+  background-color: #d3dce6;
+  color: #333;
+  text-align: center;
+  line-height: 200px;
+}
+
+/* 添加路由视图样式 */
+.el-main {
+  padding: 20px;
+}

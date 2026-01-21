@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>学生信息管理系统</title>
+    <!-- 引入外部的样式文件 -->
+    <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="./css/echarts.css" />
+    <link rel="stylesheet" href="./css/components.css" />
+    <!-- 引入Element UI样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" />
+    <!-- 使用CDN引入Vue模块-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    <!-- 引入Vue Router -->
+    <script src="https://unpkg.com/vue-router@3.6.5/dist/vue-router.js"></script>
+    <!-- 引入Element组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+
+    <!-- 引入Axios组件库 -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+<!--    jwt库-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jwt-decode/3.1.2/jwt-decode.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <el-container>
+
+            <el-header style="height: 80px; display: flex; justify-content: space-between; align-items: center;">
+    <!-- 左侧显示：学生信息管理系统 + 用户名 -->
+    <div>
+        <span id="userWelcome" style="margin-left: 20px"></span>
+
+
+    </div>
+
+    <!-- 右侧退出按钮 -->
+    <el-button type="danger" @click="logout">安全退出</el-button>
+  </el-header>
+            <el-container>
+                <!-- 侧边栏 -->
+                <el-aside width="200px">
+                    <el-menu
+                        :default-active="activePath"
+                        class="el-menu-vertical-demo"
+                        router>
+
+                        <!-- 教师菜单 -->
+                        <template v-if="userRole === 'teacher'">
+                            <el-menu-item index="/class">
+                                <i class="el-icon-menu"></i>
+                                <span slot="title">班级管理</span>
+                            </el-menu-item>
+                            <el-menu-item index="/student">
+                                <i class="el-icon-user"></i>
+                                <span slot="title">学生信息</span>
+                            </el-menu-item>
+                            <el-menu-item index="/teacher">
+                                <i class="el-icon-s-custom"></i>
+                                <span slot="title">讲师信息</span>
+                            </el-menu-item>
+                            <el-menu-item index="/course">
+                                <i class="el-icon-document"></i>
+                                <span slot="title">课程管理</span>
+                            </el-menu-item>
+                            <el-menu-item index="/image">
+                                <i class="el-icon-document"></i>
+                                <span slot="title">图像信息</span>
+                            </el-menu-item>
+                            <el-menu-item index="/leave">
+                                <i class="el-icon-tickets"></i>
+                                <span slot="title">请假管理</span>
+                            </el-menu-item>
+                        </template>
+                        <!-- 学生菜单 -->
+                        <template v-if="userRole === 'student'">
+                            <el-menu-item index="/student">
+                                <i class="el-icon-user"></i>
+                                <span slot="title">学生信息</span>
+                            </el-menu-item>
+                            <el-menu-item index="/student-leave">
+                                <i class="el-icon-document"></i>
+                                <span slot="title">我的请假申请</span>
+                            </el-menu-item>
+                        </template>
+                    </el-menu>
+                </el-aside>
+
+                <el-container>
+
+                    <el-main>
+                        <!-- 路由视图 -->
+                        <router-view></router-view>
+                    </el-main>
+                    <el-footer style="height: 30px;">学生信息管理系统</el-footer>
+                </el-container>
+            </el-container>
+        </el-container>
+    </div>
+</body>
+</html>
+<!-- 引入Vue代码 -->
+<script src="js/login1.js" ></script>
+<script src="js/token.js" type="module"></script>
+
+<!-- 引入组件 -->
+<script src="js/components/StudentInfo.js"></script>
+<script src="js/components/ImageInfo.js"></script>
+<script src="js/components/ClassManage.js"></script>
+<script src="js/components/TeacherInfo.js"></script>
+<script src="js/components/CourseManage.js"></script>
+<script src="js/components/LeaveManage.js"></script>
+<script src="js/components/StudentLeave.js"></script>
+
+<!-- 引入主入口文件（路由配置和Vue实例） -->
+<script src="js/index.js"></script>
